@@ -1,0 +1,43 @@
+import resismods as rm
+#available:
+# acis(ARI, name, year, statelist)
+# tropical(ARI, name, year)
+# pns(ARI, name, month, linklist)
+# arize(agnes, return_interval, storm_name)
+# ariplot(agnes, return_interval, storm_name)
+# totalplot(agnes, return_interval, storm_name)
+#rm.csvread('name','year')
+
+
+#statelist=['sec']
+
+linklist=['https://forecast.weather.gov/product.php?site=EWX&issuedby=EWX&product=PNS&format=CI&version=1&glossary=1', ]
+
+import pandas as pd
+
+return_interval = '24-hr'
+
+year = '2025'
+
+month = '07'
+
+import pandas as pd
+
+storm_name = 'Holiday Weekend Mid-TX Flood'
+
+
+agnes, return_interval, storm_name=rm.pns(return_interval, storm_name, month, linklist)
+print(agnes)
+
+
+rm.totalplotinterpcrest(agnes, return_interval, storm_name, month+'/'+year)
+
+
+
+agnes, return_interval, storm_name=rm.arize(agnes,return_interval, storm_name)
+
+
+rm.ariplot(agnes, return_interval, storm_name, year)
+
+
+rm.ariplotinterpcrest(agnes, return_interval, storm_name, month+'/'+year)
